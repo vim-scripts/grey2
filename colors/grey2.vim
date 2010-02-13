@@ -5,7 +5,7 @@ hi clear Normal
 set background=dark
 
 " Remove all existing highlighting and set the defaults.
-" hi clear
+hi clear
 
 " Load the syntax highlighting defaults, if it's enabled.
 if exists("syntax_on")
@@ -13,6 +13,13 @@ if exists("syntax_on")
 endif
 
 let colors_name = "grey2"
+
+if exists( 'g:grey2_text_bg' )
+    let s:bg = !!g:grey2_text_bg
+else
+    let s:bg = 1
+endif
+    
 
 
 " Normal Define Character Constant Todo Label Identifier Keyword Function Question Tag Statement Cursor Search Type Visual Folded Operator Number Comment Directory Title Special Underlined String PreProc SpecialChar Hint Emphasize 
@@ -48,6 +55,15 @@ hi  Special      gui=none      guifg=#6a4ee7     guibg=NONE
 hi  Underlined   gui=underline guifg=#8962ce     guibg=NONE
 hi  PreProc      gui=none      guifg=#6b33ff     guibg=#181818
 hi  String       gui=none      guifg=#7c5ad1     guibg=#1c1c1c
+
+if !s:bg
+    hi  Number   guibg=NONE
+    hi  PreProc  guibg=NONE
+    hi  String   guibg=NONE
+endif
+
+
+
 
 hi  SpecialChar  gui=none      guifg=NONE        guibg=NONE
 hi  Hint         gui=underline guifg=NONE        guibg=NONE
